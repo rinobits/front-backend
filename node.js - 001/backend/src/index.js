@@ -154,4 +154,3 @@ app.get('/api/tamano/:id', (req, res) => {
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
 });
-
