@@ -25,7 +25,7 @@ app.get('/api/tipoMasa', (req, res) => {
 	let retorno = [];
 	mongoose.connection.db.listCollections().toArray((err, tablas) => {
 		if(err) throw err;
-			mongoose.connection.collection('tipoMasa').toArray((err, info) => {
+			mongoose.connection.collection('tipoMasa').find().toArray((err, info) => {
 				if(err) throw err;
 				retorno = info;
 				res.json(retorno);
@@ -34,10 +34,11 @@ app.get('/api/tipoMasa', (req, res) => {
 });
 app.get('/api/tipoMasa/:id', (req, res) => {
 	let retorno = [];
-	const { idx } = req.params;
+	const idx = req.params.id;
 	//aquí debo filtrar para obtener sólo la tabla de tipo de masa
 	mongoose.connection.db.listCollections().toArray((err, tabla) => {
 		if(err) throw err;
+		
 		mongoose.connection.collection('tipoMasa').find({id: idx}).toArray((err, info) => {
 			if(err) throw err;
 			retorno = info;
@@ -45,148 +46,112 @@ app.get('/api/tipoMasa/:id', (req, res) => {
 		});
 	});
 });
-/* 
 //sabor de masa
 app.get('/api/saborMasa', (req, res) => {
-	mongoose.connection.db.listCollections().toArray(async(err, tablas) => {
+	let retorno = [];
+	mongoose.connection.db.listCollections().toArray((err, tablas) => {
 		if(err) throw err;
-		let retorno = [];
-		for(let i=0; i<tablas.length;i++){
-			if(tablas[i].name == 'saborMasa'){
-				mongoose.connection.collection(tablas[i].name).find({}).toArray((err, info) => {
-					if(err) throw err;
-					let retorno = info;
-					res.json(retorno);
-				});
-			}
-		}
+			mongoose.connection.collection('saborMasa').find().toArray((err, info) => {
+				if(err) throw err;
+				retorno = info;
+				res.json(retorno);
+			});
 	});
 });
 app.get('/api/saborMasa/:id', (req, res) => {
 	let retorno = [];
-	const { id } = req.params;
-	mongoose.connection.db.listCollections().toArray((err, tablas) => {
-		for(let i = 0; i < tablas.length; i++){
-			if(tablas[i].name == 'saborMasa'){
-				mongoose.connection.collection(tablas[i].name).find({}).toArray((err, info) => {
-					for(let j = 0; j < info.length; j++){
-						if(info[j].id == id){
-							retorno = info[j];
-							break;
-						}
-					}
-					res.json(retorno);
-				});
-			}
-		}
+	const idx = req.params.id;
+	//aquí debo filtrar para obtener sólo la tabla de tipo de masa
+	mongoose.connection.db.listCollections().toArray((err, tabla) => {
+		if(err) throw err;
+		
+		mongoose.connection.collection('saborMasa').find({id: idx}).toArray((err, info) => {
+			if(err) throw err;
+			retorno = info;
+			res.json(retorno);
+		});
 	});
 });
 // Cobertura
 app.get('/api/cobertura', (req, res) => {
+	let retorno = [];
 	mongoose.connection.db.listCollections().toArray((err, tablas) => {
 		if(err) throw err;
-		let retorno = [];
-		for(let i=0; i<tablas.length;i++){
-			if(tablas[i].name == 'cobertura'){
-				mongoose.connection.collection(tablas[i].name).find({}).toArray((err, info) => {
-					if(err) throw err;
-					let retorno = info;
-					res.json(retorno);
-				});
-			}
-		}
+			mongoose.connection.collection('cobertura').find().toArray((err, info) => {
+				if(err) throw err;
+				retorno = info;
+				res.json(retorno);
+			});
 	});
 });
-app.get('/api/saborMasa/:id', (req, res) => {
+app.get('/api/cobertura/:id', (req, res) => {
 	let retorno = [];
-	const { id } = req.params;
-	mongoose.connection.db.listCollections().toArray((err, tablas) => {
-		for(let i = 0; i < tablas.length; i++){
-			if(tablas[i].name == 'saborMasa'){
-				mongoose.connection.collection(tablas[i].name).find({}).toArray((err, info) => {
-					for(let j = 0; j < info.length; j++){
-						if(info[j].id == id){
-							retorno = info[j];
-							break;
-						}
-					}
-					res.json(retorno);
-				});
-			}
-		}
+	const idx = req.params.id;
+	//aquí debo filtrar para obtener sólo la tabla de tipo de masa
+	mongoose.connection.db.listCollections().toArray((err, tabla) => {
+		if(err) throw err;
+		
+		mongoose.connection.collection('cobertura').find({id: idx}).toArray((err, info) => {
+			if(err) throw err;
+			retorno = info;
+			res.json(retorno);
+		});
 	});
 });
 // hora
 app.get('/api/hora', (req, res) => {
-	mongoose.connection.db.listCollections().toArray(async(err, tablas) => {
+	let retorno = [];
+	mongoose.connection.db.listCollections().toArray((err, tablas) => {
 		if(err) throw err;
-		let retorno = [];
-		for(let i=0; i<tablas.length;i++){
-			if(tablas[i].name == 'hora'){
-				mongoose.connection.collection(tablas[i].name).find({}).toArray((err, info) => {
-					if(err) throw err;
-					let retorno = info;
-					res.json(retorno);
-				});
-			}
-		}
+			mongoose.connection.collection('hora').find().toArray((err, info) => {
+				if(err) throw err;
+				retorno = info;
+				res.json(retorno);
+			});
 	});
 });
-app.get('/api/saborMasa/:id', (req, res) => {
+app.get('/api/hora/:id', (req, res) => {
 	let retorno = [];
-	const { id } = req.params;
-	mongoose.connection.db.listCollections().toArray((err, tablas) => {
-		for(let i = 0; i < tablas.length; i++){
-			if(tablas[i].name == 'saborMasa'){
-				mongoose.connection.collection(tablas[i].name).find({}).toArray((err, info) => {
-					for(let j = 0; j < info.length; j++){
-						if(info[j].id == id){
-							retorno = info[j];
-							break;
-						}
-					}
-					res.json(retorno);
-				});
-			}
-		}
+	const idx = req.params.id;
+	//aquí debo filtrar para obtener sólo la tabla de tipo de masa
+	mongoose.connection.db.listCollections().toArray((err, tabla) => {
+		if(err) throw err;
+		
+		mongoose.connection.collection('hora').find({id: idx}).toArray((err, info) => {
+			if(err) throw err;
+			retorno = info;
+			res.json(retorno);
+		});
 	});
 });
 //tamaño
 app.get('/api/tamano', (req, res) => {
-	mongoose.connection.db.listCollections().toArray(async(err, tablas) => {
+	let retorno = [];
+	mongoose.connection.db.listCollections().toArray((err, tablas) => {
 		if(err) throw err;
-		let retorno = [];
-		for(let i=0; i<tablas.length;i++){
-			if(tablas[i].name == 'tamano'){
-				mongoose.connection.collection(tablas[i].name).find({}).toArray((err, info) => {
-					if(err) throw err;
-					let retorno = info;
-					res.json(retorno);
-				});
-			}
-		}
+			mongoose.connection.collection('tamano').find().toArray((err, info) => {
+				if(err) throw err;
+				retorno = info;
+				res.json(retorno);
+			});
 	});
 });
-app.get('/api/saborMasa/:id', (req, res) => {
+app.get('/api/tamano/:id', (req, res) => {
 	let retorno = [];
-	const { id } = req.params;
-	mongoose.connection.db.listCollections().toArray((err, tablas) => {
-		for(let i = 0; i < tablas.length; i++){
-			if(tablas[i].name == 'saborMasa'){
-				mongoose.connection.collection(tablas[i].name).find({}).toArray((err, info) => {
-					for(let j = 0; j < info.length; j++){
-						if(info[j].id == id){
-							retorno = info[j];
-							break;
-						}
-					}
-					res.json(retorno);
-				});
-			}
-		}
+	const idx = req.params.id;
+	//aquí debo filtrar para obtener sólo la tabla de tipo de masa
+	mongoose.connection.db.listCollections().toArray((err, tabla) => {
+		if(err) throw err;
+
+		mongoose.connection.collection('tamano').find({id: idx}).toArray((err, info) => {
+			if(err) throw err;
+			retorno = info;
+			res.json(retorno);
+		});
 	});
-}); */
+});
 // Ejecución del servidor
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
 });
+
